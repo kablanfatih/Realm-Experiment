@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     EditText userName, password, name;
     RadioGroup genderGroup;
     Button saveButton, updateButton;
-    Button deleteYesButton, deleteNoButton, updateYesButton, updateNoButton;//alert buttons
+    Button deleteYesButton, updateYesButton,exitButton;//alert buttons
     ListView listView;
     Integer positionT = 0;
     String usernameText, nameText, genderText, passwordText;
@@ -93,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
                         person.setName(nameText);
                         person.setPassword(passwordText);
 
+                        userName.setText("");
+                        name.setText("");
+                        password.setText("");
                     }
                 });
 
@@ -222,9 +225,8 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.alertlayout, null);
         deleteYesButton = (Button) view.findViewById(R.id.yes);
-        deleteNoButton = (Button) view.findViewById(R.id.no);
         updateYesButton = (Button) view.findViewById(R.id.yesUpdate);
-        updateNoButton = (Button) view.findViewById(R.id.noUpdate);
+        exitButton = (Button) view.findViewById(R.id.exitlayout);
 
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -242,18 +244,6 @@ public class MainActivity extends AppCompatActivity {
 
         dialog.show();
 
-        deleteNoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                dialog.cancel();
-
-                userName.setText("");
-                name.setText("");
-                password.setText("");
-                //genderGroup.clearCheck();
-            }
-        });
 
         updateYesButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -273,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        updateNoButton.setOnClickListener(new View.OnClickListener() {
+        exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -282,7 +272,6 @@ public class MainActivity extends AppCompatActivity {
                 userName.setText("");
                 name.setText("");
                 password.setText("");
-                // genderGroup.clearCheck();
             }
         });
     }
